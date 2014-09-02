@@ -97,10 +97,24 @@ $('body').ready(main);
   $$z = a + bi$$
   $$w = c + di$$
   <h3>i)</h3>
+  $$\overline{z} + \overline{w} = a - bi + c - di = (a + c) - (b + d)i = \overline{z + w}$$
   <h3>ii)</h3>
+  $$\overline{z} - \overline{w} = a - bi - (c - di) = (a - c) - (b - d)i = \overline{z - w}$$
   <h3>iii)</h3>
+  $$\overline{z}\overline{w} = (a - bi) * (c - di) = ac - adi - bci + bdi^2 = (ac - bd) - (ad + bc)i$$
+  $$\overline{zw} = \overline{(a + bi)(c + di)} = \overline{ac + adi + bci + bdi^2} = \overline{(ac - bd) + (ad + bc)i} = (ac - bd) - (ad + bc)i$$
   <h3>iv)</h3>
-  
+  $$\frac{\overline{z}}{\overline{w}} = \overline{\frac{z}{w}},w \not= 0$$
+  $$\overline{\frac{z}{w}} = \frac{ac + bd}{c^2+d^2} - i\frac{bc - ad}{c^2+d^2}$$
+  $$\frac{\overline{z}}{\overline{w}} = \frac{ac + (-b)(-d)}{c^2+(-d)^2} + i\frac{(-b)c - a(-d)}{c^2 + (-d)^2} = 
+  \frac{ac + bd}{c^2+d^2} - i\frac{bc - ad}{c^2 + d^2}$$
+
+  <h2><a name="3110">3.1.10</a></h2>
+  Assume z + w is real and zw is real. Show b = -d or b = d = 0.
+  $$z + w = (a + c) + (b + d)i, b + d = 0 \implies b = -d$$
+  $$zw = (ac - bd) + (ad + bc)i, ad + bc = 0 \implies a(-b) + bc = b(c - a) = 0 = ad + (-d)c = d(a - c) = 0 \implies $$
+  $$(b = 0 \vee a = c) \wedge (d = 0 \vee a = c)$$
+
 </div>
 
 
