@@ -18,6 +18,9 @@ print gauss(x=1,m=0,s=2)
 
 # some debug stuff below, just ignore
 #
+# Wolfram Alpha syntax:
+# y = 1 / (sqrt(2 * pi) * s)*exp(-1/2*((x - m)/s)^2), s = 2, x = 1, m = 0 
+#
 # from json import dumps
 #
 # from http://stackoverflow.com/questions/477486/python-decimal-range-step-value
