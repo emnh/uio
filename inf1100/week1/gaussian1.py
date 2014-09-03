@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from math import sqrt, pi, exp
-from json import dumps
 
 def gauss(x, m, s):
   x = float(x)
@@ -18,6 +17,8 @@ print gauss(x=1,m=0,s=2)
 '''
 
 # some debug stuff below, just ignore
+#
+# from json import dumps
 #
 # from http://stackoverflow.com/questions/477486/python-decimal-range-step-value
 #def drange(start, stop, step):
