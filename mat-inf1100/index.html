@@ -15,7 +15,7 @@
     src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 </head>
-<body>
+<body style="width: 40em;">
 
   <h1>Oppgave 1</h1>
   <h2>a)</h2>
@@ -43,8 +43,84 @@
   $$0.4_8 = \frac{4}{8} = \frac{1}{2} = 0.1_2$$
   <h2>e)</h2>
   $$\frac{a4_{16}}{100_{16}} = 
-  \frac{a4_{16}}{100_{16}} = 
+  \frac{a_{16}}{10_{16}} + \frac{4_{16}}{100_{16}} = 
+  \frac{1010_{2}}{2^4} + \frac{0100_{2}}{2^8} = 
   0.101001_2 $$
+
+  <h1>Oppgave 2</h1>
+  $$
+    \forall n \ge 2, x_n = cos(x_{n - 1})sin(x_{n - 2})  
+  $$
+
+  Base case, n = 2:
+  $$
+  x_2 = cos(x_{n - 1})sin(x_{n - 2}) = cos(1.4)sin(2) ~= 0.15,
+  $$
+  $$
+  0 \le x_2 = 0.15 \le 1
+  $$
+
+  Induction case:
+  Assume:
+  $$
+  \forall k, 2 \le k \le n - 1, 0 \le x_k \le 1
+  $$
+
+  We need to know the following helper sentences (can be proved using IVT):
+
+  $$
+    0 \le x_k \le 1 \implies 0 \le cos(x_k) \le 1
+  $$
+
+  $$
+    0 \le x_k \le 1 \implies 0 \le sin(x_k) \le 1
+  $$
+
+  $$
+    0 \le a,b \le 1 \implies 0 \le a*b \le 1
+  $$
+
+  Now we want to prove for the case k = n:
+  $$
+    k = n, x_k = cos(x_{k - 1})sin(x_{k - 2}) = ab, a = cos(x_{n - 1}), b = sin(x_{n - 2})
+  $$
+  Using induction hypothesis:
+  $$
+  0 \le x_{n - 1} \le 1 \wedge 0 \le x_{n - 2} \le 1
+  $$
+  Now using the three helper sentences the case is proved.
+
+  <h1>Oppgave 3</h1>
+  <h2>a)</h2>See file roots.py.
+  <h2>b)</h2>
+  $$x_2$$ will have relatively big error because $$-b, sqrt(b^2)$$ are almost equal since $$4ac$$ is near 0.
+
+  Dividing the equation by a reduces the error:
+  <pre>
+  Give a, b and c on separate lines
+  1e-6
+  10
+  1e-6
+  -10000000.0 -9.94759830064e-08
+
+  Give a, b and c on separate lines
+  1
+  10e6
+  1
+  -10000000.0 -9.96515154839e-08
+  </pre>
+
+  The correct values, using decimal module, are:
+  <pre>
+  Give a, b and c on separate lines
+  1e-6
+  10
+  1e-6
+  -9999999.99999990000000000000 -1.00000000000001E-7
+  </pre>
+
+  <h1>Oppgave 4</h1>
+  See error.py. 
 
 
 </body>
