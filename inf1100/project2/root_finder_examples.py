@@ -7,7 +7,7 @@
 '''
 '''
 
-from math import sin, cos
+from math import sin, cos, pi
 from Secant import secant, PRECISION, formatFloat
 
 def newton(f, x1, x2, dfdx, epsilon=1.0E-7, N=100):
@@ -62,7 +62,13 @@ def main():
             f=lambda x: x**5 - sin(x),
             dfdx=lambda x: 5*x**4 - cos(x),
             root_intervals=[[-0.1, 1.0], [0.9, 1.1], [-1.1, -0.9]]
+            ),
+        RootTest(
+            f=lambda x: sin(x),
+            dfdx=lambda x: cos(x),
+            root_intervals=[[-0.1, 1.0], [pi-0.1, pi+0.1], [-pi-0.1, -pi+0.1]]
             )
+
         ]
 
     root_finders = [secant, bisection, newton]
