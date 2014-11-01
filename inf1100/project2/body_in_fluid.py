@@ -37,6 +37,7 @@ class FluidBody(object):
         C_D = self.C_D
         return -g * (1 - sigma / sigma_b) - 0.5 * C_D * sigma * A / (sigma_b * V) * abs(uk) * uk
 
+
     def __call__(self, uk, tk):
         return self.fluid(uk, tk)
 
