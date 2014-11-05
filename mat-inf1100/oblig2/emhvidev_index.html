@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>MAT-INF1100 Oblig 1</title>
+<!--
+<link rel="stylesheet" type="text/css" href="FIXME" />
+<script type="text/javascript" src="FIXME"></script>
+<style type="text/css">
+/* <![CDATA[ */
+/* ]]> */
+</style>
+-->
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<body style="width: 40em;">
+
+  <h1>Oppgave 1</h1>
+  <h2>a)</h2>
+  See emhvidev_oppg1.py function accel.
+
+  <h2>b)</h2>
+  See emhvidev_oppg1.py function dist.
+
+  <h2>c)</h2>
+  Run emhvidev_oppg1.py function main to produce plots.
+  Second will open after first one is closed.
+
+  <h1>Oppgave 2</h1>
+  <h2>a)</h2>
+  $$ x' - x^2 = 1, x(0) = 1$$
+  $$ x' \over{1 + x^2} = 1$$
+  $$ x = x(t) $$
+  $$ {\delta x \over \delta t} = x'(t) $$
+  $$ \delta x = x'(t) \delta t $$
+  $$ \int{x' \over 1 + x^2}\delta t = \int{1} \delta t = t + C_1$$
+  $$ \int{x' \over 1 + x^2}\delta t = \arctan(x) + C_2$$
+  $$ \arctan x(t) = t + C $$
+  $$ x(t) = \tan(t + C) $$
+  $$ x(0) = 1 \implies x(t) = \tan(t + {\pi \over 4}) $$
+
+  <h2>b)</h2>
+  See emhvidev_oppg2 function plot_compare_b.
+
+  <h2>c)</h2>
+  See emhvidev_oppg2 function plot_compare_c.
+
+  <h2>d)</h2>
+  See emhvidev_oppg2 function plot_compare_d.
+  The custom solution performs best.
+  Yes, the square root over h must be positive, so
+  $$h \le \sqrt{x^2 + 1} - x$$, so h should be less than one for x = 0.
+  h should be small in any case for good approximation.
+
+  <h2>e)</h2>
+  Maybe one is assuming that the function is increasing and the other decreasing?
+  Or something to do with numerical stability?
+
+  Anyways, let's see what happens when h goes to 0.
+  The limit when h goes to zero of the two expressions are as follows:
+
+  $$ \lim h \rightarrow 0, x_{k + 1} = (-2 \sqrt{-h^2-2 h x_k +1}-h x_k +2)/h =
+  \lim h \rightarrow 0, {{\delta \over \delta h}(-2 \sqrt{-h^2-2 h x_k +1}-h x_k +2) \over 1} =
+  \lim h \rightarrow 0, {2(h+x_k ) \over \sqrt{-h^2-2 h x_k +1}}-x_k  =
+  2x_k -x_k  = x_k 
+  $$ and 
+  $$ \lim h \rightarrow 0, x_{k + 1} = (-2 \sqrt{-h^2-2 h x_k +1}-h x_k +2)/h =
+  \lim h \rightarrow 0, {{\delta \over \delta h}(2 \sqrt{-h^2-2 h x_k +1}-h x_k +2) \over 1} =
+  \lim h \rightarrow 0, {-2(h+x_k ) \over \sqrt{-h^2-2 h x_k +1}}-x_k  =
+  -2x_k -x_k  = -3x_k $$.
+
+  Why should the limit be $$x_k$$?
+  Because it is the previous value, so when the delta is zero, we keep the previous value.
+</body>
+</html>
