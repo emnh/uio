@@ -18,7 +18,6 @@ from matplotlib.pylab import *
 class ProblemSIR:
     def __init__(self, p, nu, beta, S0, I0, R0, V0, T):
         self.T = T
-        self.p = p
         self.S0 = S0
         self.I0 = I0
         self.R0 = R0
@@ -34,13 +33,18 @@ class ProblemSIR:
         elif callable(beta):
             self.beta = beta
 
+        if isinstance(p, (float, int)):
+            self.p = lambda t: p
+        elif callable(p):
+            self.p = p
+
     def __call__(self, u, t):
         S, I, R, V = u
         return [
-                -self.beta(t)*S*I - self.p*S,
+                -self.beta(t)*S*I - self.p(t)*S,
                 self.beta(t)*S*I-self.nu(t)*I,
                 self.nu(t)*I,
-                self.p*S]
+                self.p(t)*S]
 
     def term(self, u, t, i):
         S, I, R, V = u[i]
@@ -72,7 +76,9 @@ def doPlot(tp, u):
 
 def main():
     beta = lambda t: 0.0001
-    problem = ProblemSIR(T=60, p=0.1, nu=0.1, beta=beta, S0=1500, I0=1.0, R0=0.0, V0=0.0)
+    VT = 15
+    p = lambda t: 0.1 if 6 <= t <= 6 + VT else 0
+    problem = ProblemSIR(T=60, p=p, nu=0.1, beta=beta, S0=1500, I0=1.0, R0=0.0, V0=0.0)
     solver = SolverSIR(problem, 0.5)
     tp, u = solver.solve()
     doPlot(tp, u)
@@ -82,6 +88,6 @@ if __name__ == '__main__':
     main()
 
 '''
-Max infected 64.52 with beta = 0.0005. Much less than before with 897.18.
-Max infected 1.10 with beta = 0.0001.
+The infection never gets a bite on proper.
+With this vaccination period it's only 1.48.
 '''
