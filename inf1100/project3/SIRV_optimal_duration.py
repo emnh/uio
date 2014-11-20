@@ -64,7 +64,7 @@ class SolverSIR:
         n = int(round(self.problem.T/float(self.dt)))
         tp = numpy.linspace(0, self.problem.T, n)
         u, t = solver.solve(tp, lambda u, t, i: problem.term(u, t, i))
-        print 'Max infected', max(u[:,1])
+        print 'Max infected', max(u[:,1]), 'for VT', problem.VT
         return tp, u
 
 def doPlot(tp, u):
@@ -72,22 +72,22 @@ def doPlot(tp, u):
     plot(tp, u[:,1], 'g-')
     plot(tp, u[:,2], 'b-')
     plot(tp, u[:,3], 'y-')
-    show()
 
 def main():
-    beta = lambda t: 0.0001
-    VT = 15
-    p = lambda t: 0.1 if 6 <= t <= 6 + VT else 0
-    problem = ProblemSIR(T=60, p=p, nu=0.1, beta=beta, S0=1500, I0=1.0, R0=0.0, V0=0.0)
-    solver = SolverSIR(problem, 0.5)
-    tp, u = solver.solve()
-    doPlot(tp, u)
+    beta = lambda t: 0.0005
+    for VT in range(32):
+        p = lambda t: 0.1 if 6 <= t <= 6 + VT else 0
+        problem = ProblemSIR(T=60, p=p, nu=0.1, beta=beta, S0=1500, I0=1.0, R0=0.0, V0=0.0)
+        problem.VT = VT
+        solver = SolverSIR(problem, 0.5)
+        tp, u = solver.solve()
+        doPlot(tp, u)
+    show()
 
 
 if __name__ == '__main__':
     main()
 
 '''
-The infection never gets a bite on proper.
-With this vaccination period it's only 1.48.
+With beta = 0.0005 the optimal is reached after 9 days of vaccination.
 '''
